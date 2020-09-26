@@ -26,7 +26,7 @@ for(var i=0 ; i<addToCartBtns.length ; i++)
     addToCart.addEventListener('click', addToCartClicked)
 }
 
-document.getElementsByClassName('btn-purchase')[0].addEventListener('click' , purchaseClicked)
+document.getElementsByClassName('btn-checkout')[0].addEventListener('click' , purchaseClicked)
 
 
 }

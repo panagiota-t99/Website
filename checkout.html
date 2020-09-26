@@ -20,44 +20,49 @@
         </nav>
         <section class="container content-section">
             <h2 class="section-header">Information</h2>
-            <div>
-                <span class="info-title">Name</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Name</span>
+                <input class="info-input-box" type="text">
             </div>
-            <div>
-                <span class="info-title">Last Name</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Last Name</span>
+                <input class="info-input-box" type="text">
             </div>
-            <div>
-                <span class="info-title">Email address</span><br>
-                <input type="email"><br>
+            <div class="info-row">
+                <span class="info-title">Email address</span>
+                <input class="info-input-box" type="email">
             </div>
-            <div>
-                <span class="info-title">Country</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Country</span>
+                <select class="info-input-box select-area" name="country" required>
+                    <option selected disabled hidden style='display: none' value=''></option>
+                    <option value="Greece">Greece</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Spain">Spain</option>
+                  </select>
             </div>
-            <div>
-                <span class="info-title">City</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">City</span>
+                <input class="info-input-box" type="text">
             </div>
-            <div>
-                <span class="info-title">Zip Code</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Zip Code</span>
+                <input class="info-input-box" type="number">
             </div>
-            <div>
-                <span class="info-title">Address</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Address</span>
+                <input class="info-input-box" type="text">
             </div>
-            <div>
-                <span class="info-title">Number</span><br>
-                <input type="text"><br>
+            <div class="info-row">
+                <span class="info-title">Number</span>
+                <input class="info-input-box" type="number">
             </div>
-            <div>
-                <span class="info-title">Special requests</span><br>
-                <textarea>
+            <div class="info-row">
+                <span class="info-title">Special requests</span>
+                <textarea class="info-input-box text-area"> </textarea>
             </div>
-           
-
+        
+            <button class="btn btn-checkout" type="button">Continue to Shipping</button>
         </section>
         
         
