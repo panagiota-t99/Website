@@ -361,3 +361,7 @@ html, body{
     display: block;
     margin: 40px auto 80px auto;
 }
+
+.info-title{
+    color:red;
+}
