@@ -49,7 +49,7 @@ function purchaseClicked(event){
         cartItems.removeChild(cartItems.firstChild)
     }
     updateCartTotal()
-    window.location = "purchase.html"
+    window.location = "checkout.html"
 }
 
 
