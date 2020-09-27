@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>South Park | About</title>
+        <title>South Park | Shipping</title>
         <meta name="description" content="This is the description">
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="images/icon.ico" type="image/icon type">
@@ -9,7 +9,6 @@
     </head>
     <body>
         <header class="main-header"> 
-            
         </header>
         <nav class="nav main-nav">
             <ul> 
@@ -19,18 +18,41 @@
             </ul>
         </nav>
         <section class="content-section container">
+            <h2 class="section-header">Shipping</h2>
+            <div class="shipping-info">
+                <p class="ship-title">Choose shipping method:</p>
+                <div class="ship-row">
+                    <input class ="ship-method" type="radio" name="shipping" value="standard">
+                    <span class="ship-method-title">Standard shipping</span>
+                    <span class="ship-method-info">Approximate time of delivery: 14 days</span>
+                    <span class="ship-method-info">Cost: $4.99</span>
+                </div>
+                <div class="ship-row">
+                    <input class ="ship-method" type="radio" name="shipping" value="economy">
+                    <span class="ship-method-title">Economy shipping</span>
+                    <span class="ship-method-info">Approximate time of delivery: 10 days</span>
+                    <span class="ship-method-info">Cost: $7.99</span>
+                </div>
+                <div class="ship-row">
+                    <input class ="ship-method" type="radio" name="shipping" value="express">
+                    <span class="ship-method-title">Express shipping</span>
+                    <span class="ship-method-info">Approximate time of delivery: 5 days</span>
+                    <span class="ship-method-info">Cost: $14.99</span>
+                </div>
+                <button class="btn btn-checkout" type="button">Continue to Payment</button>
+            </div>
         </section>
         <footer class="main-footer">
             <div class="container main-footer-container">
-            <h3 class="tv-show-name-footer">South Park</h3>
-            <ul class="nav nav-footer"> 
-                <li><a href="https://www.facebook.com/southpark/" target="_blank">
-                    <img src="images/facebook.png" width="50" height="50"></a></li>
-                <li><a href="https://www.instagram.com/southpark/" target="_blank">
-                    <img src="images/instagram.png" width="50" height="50"></a></li>
-                <li><a href="https://twitter.com/southpark" target="_blank">
-                    <img src="images/twitter.png" width="50" height="50"></a></li>
-            </ul>
+                <h3 class="tv-show-name-footer">South Park</h3>
+                <ul class="nav nav-footer"> 
+                    <li><a href="https://www.facebook.com/southpark/" target="_blank">
+                        <img src="images/facebook.png" width="50" height="50"></a></li>
+                    <li><a href="https://www.instagram.com/southpark/" target="_blank">
+                        <img src="images/instagram.png" width="50" height="50"></a></li>
+                    <li><a href="https://twitter.com/southpark" target="_blank">
+                        <img src="images/twitter.png" width="50" height="50"></a></li>
+                </ul>
              </div>  
         </footer>
     </body>

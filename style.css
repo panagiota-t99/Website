@@ -425,4 +425,30 @@ html, body{
 }
 
 
+.ship-method{
+    display: inline-block;
+    margin-bottom: 8px;
+  
+}
 
+.ship-title{
+    font-size: 1.2em;
+    color: black;
+    font-weight: bold;
+}
+
+.ship-method-title{
+    color: black;
+    font-weight: bold;
+    
+}
+
+.ship-row{
+    margin-bottom: 25px;
+}
+
+.ship-method-info{
+    display: block;
+    margin-left: 25px;
+    color: rgb(66, 68, 66);
+}
