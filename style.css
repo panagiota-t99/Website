@@ -424,10 +424,16 @@ html, body{
     
 }
 
+.shipping-message{  
+    margin-left: 2px;
+    margin-bottom: 10px;
+}
+
 
 .ship-method{
     display: inline-block;
     margin-bottom: 8px;
+    
   
 }
 
