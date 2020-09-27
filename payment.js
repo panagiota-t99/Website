@@ -13,10 +13,10 @@ function ready(){
 function submitInformation(event){
     var button = event.target
     var parent = button.parentElement
-    var checked_shipping_method = parent.querySelector('input[name = "shipping"]:checked');
+    var checked_shipping_method = parent.querySelector('input[name = "payment"]:checked');
 
     if(checked_shipping_method != null)
-        window.location = "payment.html" 
+        window.location = "purchase.html" 
     else
         parent.getElementsByClassName('message')[0].innerText = 'Please choose an option to proceed.' 
 }
