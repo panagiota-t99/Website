@@ -4,7 +4,7 @@
 
 @font-face{
     font-family: "South Park";
-    src: url("font/south\ park.ttf");
+    src: url("fonts/south\ park.ttf")
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -392,6 +392,7 @@ html, body{
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 1.15em;
+    margin-left: 5px;
 }
 
 .text-area{
@@ -404,4 +405,10 @@ html, body{
 .select-area{
     border: 2px solid;
     border-color: rgb(115, 117, 117);
+}
+
+
+.error{
+    opacity: 0 ;
+    color: rgb(230, 0, 0)
 }
