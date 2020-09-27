@@ -17,46 +17,53 @@ function submitInformation(event){
     var titles = parent.getElementsByClassName('info-title')
     var inputs = parent.getElementsByClassName('info-input-box')
     var errors = parent.getElementsByClassName('error')
+    var messages = parent.getElementsByClassName('message')
 
     for(var i = 0 ; i < errors.length  ; i++){
         
         if (inputs[i].value == '')
             {
                 highlightError(inputs[i] , errors[i])
-                
+                if (i!= 3)  
+                    messages[i].innerText = "Please fill out this field"
+                else
+                    messages[i].innerText = "Please select an option"      
             }  
         
     }
-    if (!validateName_LastName_City(inputs[0].value))
+
+    if (inputs[0].value != '' && !validateName_LastName_City(inputs[0].value))
     {
-        errors[0].style.opacity = "1"
-        inputs[0].style.borderColor = "rgb(165, 22, 22)"
+        highlightError(inputs[0] , errors[0])
+        messages[0].innerText = "Please fill out your name correctly"
+
     }
-    if (!validateName_LastName_City(inputs[1].value))
+    if (inputs[1].value != '' &&  !validateName_LastName_City(inputs[1].value))
     {
-        errors[1].style.opacity = "1"
-        inputs[1].style.borderColor = "rgb(165, 22, 22)"
+        highlightError(inputs[1] , errors[1])
+        messages[1].innerText = "Please fill out your last name correctly"
     }
 
-    if (!validateEmail(inputs[2].value))
+    if (inputs[2].value != '' &&  !validateEmail(inputs[2].value))
     {
-        errors[2].style.opacity = "1"
-        inputs[2].style.borderColor = "rgb(165, 22, 22)"
+        highlightError(inputs[2] , errors[2])
+        messages[2].innerText = "Invalid email address"
     }
-    if (!validateName_LastName_City(inputs[4].value))
+    if (inputs[4].value != '' &&  !validateName_LastName_City(inputs[4].value))
     {
-        errors[4].style.opacity = "1"
-        inputs[4].style.borderColor = "rgb(165, 22, 22)"
+        highlightError(inputs[4] , errors[4])
+        messages[4].innerText = "Please fill out your city correctly"
     }
-    if (inputs[5].value < 10000 || inputs[5].value > 99999 )
+    if (inputs[5].value != '' &&  (inputs[5].value < 10000 || inputs[5].value > 99999 ))
     {
-        errors[5].style.opacity = "1"
-        inputs[5].style.borderColor = "rgb(165, 22, 22)"
+        highlightError(inputs[5] , errors[5])
+        messages[5].innerText = "Invalid input. Please use a number between [10000-99999]"
     }
-    if (inputs[7].value <= 0 || inputs[7].value > 300)
+    if (inputs[7].value != '' &&  (inputs[7].value <= 0 || inputs[7].value > 300))
     { 
         highlightError(inputs[7],errors[7])
-        parent.getElementsByClassName('message')[0].innerText = "hello"
+        messages[7].innerText = "Invalid input. Please use a number between [1-300]"
+        
     }
     
     
