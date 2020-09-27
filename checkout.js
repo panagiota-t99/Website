@@ -24,7 +24,7 @@ function submitInformation(event){
         if (inputs[i].value == '')
             {
                 highlightError(inputs[i] , errors[i])
-                if (i!= 3)  
+                if (i != 3)  
                     messages[i].innerText = "Please fill out this field"
                 else
                     messages[i].innerText = "Please select an option"      
@@ -66,8 +66,17 @@ function submitInformation(event){
         
     }
     
+
+    
+   
     
 }
+
+
+
+
+
+
 
 function highlightError(input,error)
 {
@@ -75,9 +84,14 @@ function highlightError(input,error)
     input.style.borderColor = "rgb(165, 22, 22)"
 }
 
+function removeError(input,error,message){
+    error.style.opacity = "0"
+    input.style.borderColor = "rgb(115, 117, 117)"
+    message.innerText = ""
+}
 
 function validateName_LastName_City(word){
-    const re  = /^[a-zA-Z]/
+    const re  = /^[a-zA-Z]+$/
     return re.test(word)
 }
 
