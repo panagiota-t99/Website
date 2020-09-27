@@ -11,13 +11,10 @@ function ready(){
         var btn = button[i] 
         btn.addEventListener('click' , dealWithButton)
     }
-
-
 }
 
 
-function dealWithButton(event)
-{
+function dealWithButton(event){
     var btnClicked = event.target
     var text = btnClicked.innerText
     if (text  == 'Watch the latest episode!')
@@ -30,7 +27,6 @@ function dealWithButton(event)
 
 
 function playSpecificEpisode(btn){
-
     var parent  = btn.parentElement
     var title = parent.getElementsByClassName('ep-title')[0].innerText
     if (title == 'CARTMAN GETS AN ANAL PROBE')
@@ -59,6 +55,4 @@ function playSpecificEpisode(btn){
         window.open("https://www.southparkstudios.com/episodes/negd7t/south-park-mecha-streisand-season-1-ep-12" ,'_blank' )
     else if (title == "CARTMAN'S MOM IS A DIRTY SLUT")
         window.open("https://www.southparkstudios.com/episodes/dumjvr/south-park-cartman-s-mom-is-a-dirty-slut-season-1-ep-13" ,'_blank' )   
-
-
 }
