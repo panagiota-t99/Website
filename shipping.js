@@ -5,8 +5,11 @@ else
 
 
 function ready(){
-    var button = document.getElementsByClassName('btn-checkout')[0]
-    button.addEventListener('click' , submitInformation)
+    var button0 = document.getElementsByClassName('btn-checkout')[0]
+    button0.addEventListener('click' , goBack)
+
+    var button1 = document.getElementsByClassName('btn-checkout')[1]
+    button1.addEventListener('click' , submitInformation)
 }
 
 
@@ -19,4 +22,9 @@ function submitInformation(event){
         window.location = "payment.html" 
     else
         parent.getElementsByClassName('message')[0].innerText = 'Please choose an option to proceed.' 
+}
+
+function goBack(event){
+    var button = event.target
+    window.location = "checkout.html"
 }

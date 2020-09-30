@@ -458,3 +458,8 @@ html, body{
     margin-left: 25px;
     color: rgb(66, 68, 66);
 }
+
+.btn-back{
+    display: inline-block;
+    margin-left: 10px;
+}
