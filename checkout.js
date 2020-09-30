@@ -72,8 +72,21 @@ function submitInformation(event){
     for (var i = 0 ; i < 8 ; i++)
         counter = counter + flag[i]
 
-    if (counter == 8)
-        window.location = "shipping.html"      
+    
+    if (counter == 8){
+        window.location = "shipping.html"  
+        localStorage["name"] = inputs[0].value
+        localStorage["last-name"] = inputs[1].value
+        localStorage["email"] = inputs[2].value
+        localStorage["country"] = inputs[3].value
+        localStorage["city"] = inputs[4].value
+        localStorage["zip-code"] = inputs[5].value
+        localStorage["address"] = inputs[6].value
+        localStorage["number"] = inputs[7].value
+
+        if (inputs[8] != "")
+            localStorage["request"] = inputs[8].value  
+    }
 }
 
 
