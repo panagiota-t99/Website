@@ -463,3 +463,44 @@ html, body{
     display: inline-block;
     margin-left: 10px;
 }
+
+.section-header-small{
+    color: black;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+   
+}
+
+.client-info-details{
+    font-size: 1.2em; 
+}
+
+.ship-info-details{
+    font-size: 1.2em; 
+}
+
+.pay-info-details{
+    font-size: 1.2em; 
+}
+
+
+.black{
+    color: black;
+    margin: 5px 0px;
+  
+}
+
+.client-info{
+    margin-bottom: 50px;
+}
+
+.shipping-info{
+    margin-bottom: 50px;
+}
+
+.payment-info{
+    margin-bottom: 50px;
+}
+
+
+
