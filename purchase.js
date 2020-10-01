@@ -6,7 +6,7 @@ else
 
 function ready(){
     var row = document.createElement('div')
-    row.classList.add('client-info-details')
+    row.classList.add('details')
     var info = document.getElementsByClassName('client-info')[0]
 
     var cartRowContent = `
@@ -24,7 +24,7 @@ function ready(){
 
 
     var row1 = document.createElement('div')
-    row1.classList.add('ship-info-details')
+    row1.classList.add('details')
     var info1 = document.getElementsByClassName('shipping-info')[0]
 
     var cartRowContent1 = `
@@ -39,7 +39,7 @@ function ready(){
 
 
     var row2 = document.createElement('div')
-    row2.classList.add('pay-info-details')
+    row2.classList.add('details')
     var info2 = document.getElementsByClassName('payment-info')[0]
 
     var cartRowContent2 = `
@@ -50,7 +50,83 @@ function ready(){
     info2.append(row2)
 
 
+    var button = document.getElementsByClassName('btn-checkout')[0]
+    button.addEventListener('click' , completePurchase)
+
+    displayCart()
+
+    
+}
+
+function completePurchase(event){
+    button = event.target
+    alert("Your purchase is being processed!!!")
+}
+
+function displayCart(){
+    var num = localStorage["n"].length - 1
+    var total = 0
+
+    for (var i = 0 ; i < num ; i++){
+        var row3 = document.createElement('div')
+        row3.classList.add('cart-row')
+        var info3 = document.getElementsByClassName('cart-info')[0]
+
+        var cartRowContent3 = `<div class="cart-item cart-column">
+        <img class="cart-item-image" src="${localStorage["item-image" + i]}">
+        <span class="cart-item-title">${localStorage["item-name" + i]}</span>
+        </div>
+        <span class="cart-price cart-column">${localStorage["item-price" + i]}</span>
+        <div class="cart-quantity cart-column">
+        <input class="cart-quantity-input" type="number" value="${localStorage["item-quantity" + i]}" readonly>
+        </div>
+        <span class="cart-total-item-price cart-column">${localStorage["item-full-price" + i]}</span>
+        `
+        row3.innerHTML = cartRowContent3  
+        info3.append(row3)
+
+       
+
+        var price = parseFloat(localStorage["item-price" + i].replace('$',''))
+        var quantity = parseInt(localStorage["item-quantity" + i] )
+        total = total + (price * quantity)
+        
+    }
+
+    total = Math.round(total * 100) / 100
+    document.getElementsByClassName('cartb')[0].innerText = "$" + total
+
+    addShipping_Payment()
+
+}
+
+
+function addShipping_Payment(){
+    document.getElementsByClassName('cartc')[0].innerText = "+ " + localStorage['shipping-fee']
+
+    var s = parseFloat(localStorage['shipping-fee'].replace('$',''))
+
+    var t = document.getElementsByClassName('cartb')[0].innerText
+    var total = parseFloat(t.replace('$',''))
+    total = total + s
+
+    if (localStorage["payment"] == "Cash on delivery"){
+        document.getElementsByClassName('carta')[2].innerText = "COD"
+        document.getElementsByClassName('cartc')[1].innerText = "+ $2.99"
+        var p =  2.99
+        total = total + p
+    }
+
+    
+   
+    total = Math.round(total * 100) / 100
+
+    document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
 
 
 
 }
+
+
+
+

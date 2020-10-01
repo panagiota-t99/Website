@@ -23,6 +23,8 @@ function ready(){
         addToCart.addEventListener('click', addToCartClicked)
     }
     document.getElementsByClassName('btn-checkout')[0].addEventListener('click' , purchaseClicked)
+
+    localStorage["n"] = 0
 }
 
 
@@ -35,11 +37,7 @@ function purchaseClicked(event){
         return
     }
 
-    var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()){
-        cartItems.removeChild(cartItems.firstChild)
-    }
-    updateCartTotal()
+    
     window.location = "checkout.html"
 }
 
@@ -97,6 +95,8 @@ function addItemToCart(title, price, image_source){
     row.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     row.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 
+    localStorage["n"] = localStorage["n"]  + 1
+
 }
 
 function updateCartTotal(){
@@ -114,6 +114,12 @@ function updateCartTotal(){
         row_value = Math.round(row_value * 100) / 100
         document.getElementsByClassName('cart-total-item-price')[i+1].innerText= '$' + row_value;
         total = total + row_value
+        localStorage["item-name" + i] = cartRow.getElementsByClassName('cart-item-title')[0].innerText
+        localStorage["item-price" + i] = priceElement.innerText
+        localStorage["item-quantity" + i] = quantity
+        localStorage["item-full-price" + i] = row_value
+        localStorage["item-image" + i] = cartRow.getElementsByClassName('cart-item-image')[0].src
+        localStorage["item-i" + i] = i
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total

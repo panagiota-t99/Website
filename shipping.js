@@ -19,15 +19,15 @@ function submitInformation(event){
         localStorage["shipping"] = checked_shipping_method.value
         if (checked_shipping_method.value == "Standard shipping"){
             localStorage["shipping-time"] = 14
-            localStorage["shipping-fee"] = 4.99
+            localStorage["shipping-fee"] = "$4.99"
         }
         else if (checked_shipping_method.value == "Economy shipping"){
             localStorage["shipping-time"] = 10
-            localStorage["shipping-fee"] = 7.99
+            localStorage["shipping-fee"] = "$7.99"
         }
         else{
             localStorage["shipping-time"] = 5
-            localStorage["shipping-fee"] = 14.99
+            localStorage["shipping-fee"] = "$14.99"
         }
 
         window.location = "payment.html" 

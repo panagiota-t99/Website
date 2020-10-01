@@ -471,18 +471,9 @@ html, body{
    
 }
 
-.client-info-details{
+.details{
     font-size: 1.2em; 
 }
-
-.ship-info-details{
-    font-size: 1.2em; 
-}
-
-.pay-info-details{
-    font-size: 1.2em; 
-}
-
 
 .black{
     color: black;
@@ -501,6 +492,36 @@ html, body{
 .payment-info{
     margin-bottom: 50px;
 }
+
+.cart-info{
+    margin-bottom: 50px;
+}
+
+.carta{
+    margin-left: 560px;
+    margin-right: 10px;
+    
+}
+
+.cartb{
+    margin-left: 30px;
+}
+
+.cartc{
+    margin-left: 13px;
+    
+}
+
+.cart{
+    font-size: 1.3em;
+    color: black;
+}
+
+.cartx{
+    margin-right: 52px;
+}
+
+
 
 
 

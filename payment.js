@@ -17,7 +17,7 @@ function submitInformation(event){
 
     if(checked_payment_method != null){
         localStorage["payment"] = checked_payment_method.value
-        if (checked_payment_method == "Online payment")
+        if (checked_payment_method.value == "Online payment")
             localStorage["payment-details"] = "Visa, MasterCard, Paypal or Money transfer"
         else
             localStorage["payment-details"] = "Extra charge: $2.99"
