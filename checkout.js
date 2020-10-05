@@ -84,8 +84,10 @@ function submitInformation(event){
         localStorage["address"] = inputs[6].value
         localStorage["number"] = inputs[7].value
 
-        if (inputs[8] != "")
+        if (inputs[8].value != "")
             localStorage["request"] = inputs[8].value  
+        else
+            localStorage["request"] = "empty"
     }
 }
 

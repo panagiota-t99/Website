@@ -524,4 +524,22 @@ html, body{
 
 
 
+.request{
+    margin-top: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(158, 48, 48);
+    font-size: 0.9em;
+}
 
+.btn-edit{
+    display: inline-block;
+    margin-left: 33%;
+    margin-top: 60px;
+}
+
+.btn-purchase{
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 60px;
+}

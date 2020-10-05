@@ -21,6 +21,17 @@ function ready(){
     row.innerHTML = cartRowContent   
     info.append(row)
 
+    if (localStorage["request"] != "empty" )
+    {
+        var extra = document.createElement('div')
+        extra.classList.add('details')
+        var request = document.getElementsByClassName('client-info')[0]
+        var requestContent = `<div class="black request">Special request: ${localStorage["request"]}</div>`
+        extra.innerHTML = requestContent
+        request.append(extra)
+
+    }
+
 
 
     var row1 = document.createElement('div')
@@ -50,12 +61,23 @@ function ready(){
     info2.append(row2)
 
 
-    var button = document.getElementsByClassName('btn-checkout')[0]
-    button.addEventListener('click' , completePurchase)
+    var button1 = document.getElementsByClassName('btn-edit')[0]
+    var button2 = document.getElementsByClassName('btn-purchase')[0]
+    
+    button1.addEventListener('click' , editCart)
+    button2.addEventListener('click' , completePurchase)
+
+     
 
     displayCart()
 
     
+}
+
+function editCart(event){
+    button = event.target
+    localStorage["edit-cart-flag"] = "true"
+    window.location = "store.html"
 }
 
 function completePurchase(event){

@@ -11,6 +11,8 @@ function ready(){
         var btn = button[i] 
         btn.addEventListener('click' , dealWithButton)
     }
+
+    localStorage["edit-cart-flag"] = "false"
 }
 
 
