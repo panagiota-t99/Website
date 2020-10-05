@@ -10,13 +10,13 @@ function ready(){
     var info = document.getElementsByClassName('client-info')[0]
 
     var cartRowContent = `
-    <div class="black">Name: ${localStorage["name"]}</div>
-    <div class="black">Last Name: ${localStorage["last-name"]}</div>
-    <div class="black">Email: ${localStorage["email"]}</div>
-    <div class="black">Country: ${localStorage["country"]}</div>
-    <div class="black">City: ${localStorage["city"]}</div>
-    <div class="black">Address: ${localStorage["address"]} ${localStorage["number"]}</div>
-    <div class="black">Zip code: ${localStorage["zip-code"]}</div>
+        <div class="black">Name: ${localStorage["name"]}</div>
+        <div class="black">Last Name: ${localStorage["last-name"]}</div>
+        <div class="black">Email: ${localStorage["email"]}</div>
+        <div class="black">Country: ${localStorage["country"]}</div>
+        <div class="black">City: ${localStorage["city"]}</div>
+        <div class="black">Address: ${localStorage["address"]} ${localStorage["number"]}</div>
+        <div class="black">Zip code: ${localStorage["zip-code"]}</div>
     `
     row.innerHTML = cartRowContent   
     info.append(row)
@@ -29,9 +29,7 @@ function ready(){
         var requestContent = `<div class="black request">Special request: ${localStorage["request"]}</div>`
         extra.innerHTML = requestContent
         request.append(extra)
-
     }
-
 
 
     var row1 = document.createElement('div')
@@ -45,8 +43,6 @@ function ready(){
     `
     row1.innerHTML = cartRowContent1   
     info1.append(row1)
-
-
 
 
     var row2 = document.createElement('div')
@@ -67,12 +63,10 @@ function ready(){
     button1.addEventListener('click' , editCart)
     button2.addEventListener('click' , completePurchase)
 
-     
 
     displayCart()
-
-    
 }
+
 
 function editCart(event){
     button = event.target
@@ -80,10 +74,12 @@ function editCart(event){
     window.location = "store.html"
 }
 
+
 function completePurchase(event){
     button = event.target
     alert("Your purchase is being processed!!!")
 }
+
 
 function displayCart(){
     var num = localStorage["n"].length - 1
@@ -95,39 +91,32 @@ function displayCart(){
         var info3 = document.getElementsByClassName('cart-info')[0]
 
         var cartRowContent3 = `<div class="cart-item cart-column">
-        <img class="cart-item-image" src="${localStorage["item-image" + i]}">
-        <span class="cart-item-title">${localStorage["item-name" + i]}</span>
-        </div>
-        <span class="cart-price cart-column">${localStorage["item-price" + i]}</span>
-        <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="${localStorage["item-quantity" + i]}" readonly>
-        </div>
-        <span class="cart-total-item-price cart-column">${localStorage["item-full-price" + i]}</span>
+            <img class="cart-item-image" src="${localStorage["item-image" + i]}">
+            <span class="cart-item-title">${localStorage["item-name" + i]}</span>
+            </div>
+            <span class="cart-price cart-column">${localStorage["item-price" + i]}</span>
+            <div class="cart-quantity cart-column">
+            <input class="cart-quantity-input" type="number" value="${localStorage["item-quantity" + i]}" readonly>
+            </div>
+            <span class="cart-total-item-price cart-column">${localStorage["item-full-price" + i]}</span>
         `
         row3.innerHTML = cartRowContent3  
         info3.append(row3)
 
-       
 
         var price = parseFloat(localStorage["item-price" + i].replace('$',''))
         var quantity = parseInt(localStorage["item-quantity" + i] )
-        total = total + (price * quantity)
-        
+        total = total + (price * quantity)  
     }
-
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cartb')[0].innerText = "$" + total
-
     addShipping_Payment()
-
 }
 
 
 function addShipping_Payment(){
     document.getElementsByClassName('cartc')[0].innerText = "+ " + localStorage['shipping-fee']
-
     var s = parseFloat(localStorage['shipping-fee'].replace('$',''))
-
     var t = document.getElementsByClassName('cartb')[0].innerText
     var total = parseFloat(t.replace('$',''))
     total = total + s
@@ -139,14 +128,8 @@ function addShipping_Payment(){
         total = total + p
     }
 
-    
-   
     total = Math.round(total * 100) / 100
-
     document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
-
-
-
 }
 
 

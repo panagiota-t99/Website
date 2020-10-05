@@ -68,6 +68,7 @@ function submitInformation(event){
         messages[7].innerText = "Invalid input. Please use a number between [1-300]"   
     }
 
+    
     var counter = 0;
     for (var i = 0 ; i < 8 ; i++)
         counter = counter + flag[i]

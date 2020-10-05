@@ -24,8 +24,6 @@ function ready(){
     }
     document.getElementsByClassName('btn-checkout')[0].addEventListener('click' , purchaseClicked)
 
-
-    
     if (localStorage["edit-cart-flag"] == "true")
         rebuildCart()
         
@@ -33,16 +31,15 @@ function ready(){
 
 
 function rebuildCart(){
-        var num = localStorage["n"].length - 1
-        var total = 0
+    var num = localStorage["n"].length - 1
+    var total = 0
     
-        for (var i = 0 ; i < num ; i++){
-            
-            var row = document.createElement('div')
-            row.classList.add('cart-row')
-            var info = document.getElementsByClassName('cart-items')[0]
+    for (var i = 0 ; i < num ; i++){
+        var row = document.createElement('div')
+        row.classList.add('cart-row')
+        var info = document.getElementsByClassName('cart-items')[0]
     
-            var cartRowContent = `<div class="cart-item cart-column">
+        var cartRowContent = `<div class="cart-item cart-column">
             <img class="cart-item-image" src="${localStorage["item-image" + i]}">
             <span class="cart-item-title">${localStorage["item-name" + i]}</span>
             </div>
@@ -52,25 +49,20 @@ function rebuildCart(){
             <button class="btn btn-danger"type="button">REMOVE</button>
             </div>
             <span class="cart-total-item-price cart-column">${localStorage["item-full-price" + i]}</span>
-            `
-            row.innerHTML = cartRowContent 
-            info.append(row)
+        `
+        row.innerHTML = cartRowContent 
+        info.append(row)
 
-            var price = parseFloat(localStorage["item-price" + i].replace('$',''))
-            var quantity = parseInt(localStorage["item-quantity" + i] )
-            total = total + (price * quantity)
+        var price = parseFloat(localStorage["item-price" + i].replace('$',''))
+        var quantity = parseInt(localStorage["item-quantity" + i] )
+        total = total + (price * quantity)
 
-            row.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
-            row.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
-        }
+        row.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
+        row.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    }
 
-        total = Math.round(total * 100) / 100
-        document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
-
-        
-
-    
-
+    total = Math.round(total * 100) / 100
+    document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
 }
 
 
@@ -82,8 +74,6 @@ function purchaseClicked(event){
         alert('The cart is empty!')
         return
     }
-
-       
     window.location = "checkout.html"
 }
 
@@ -93,6 +83,7 @@ function removeCartItem(event){
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
 }
+
 
 function quantityChanged(event){
     var input = event.target
@@ -114,15 +105,19 @@ function addToCartClicked(event){
 }
 
 
-
 function addItemToCart(title, price, image_source){
     var row = document.createElement('div')
     row.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     var itemNames = cartItems.getElementsByClassName('cart-item-title')
+
+    var flag = -1
+    var cartRows = cartItems.getElementsByClassName('cart-row')
+
     for(var i=0 ; i<itemNames.length ; i++){
         if (itemNames[i].innerText == title){
-            alert("This item is already added to the cart!")
+            flag = i
+            addExistingItem(flag, cartRows)
             return
         }
     }
@@ -137,15 +132,27 @@ function addItemToCart(title, price, image_source){
         <button class="btn btn-danger"type="button">REMOVE</button>
         </div>
         <span class="cart-total-item-price cart-column">${price}</span>
-        `
+    `
     row.innerHTML = cartRowContent   
     cartItems.append(row)
     row.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     row.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
-
-    
-
 }
+
+
+function addExistingItem(flag, cartRows){
+    for(var i=0 ; i<cartRows.length ; i++){
+        if (flag == i){
+            var quantityElement = cartRows[i].getElementsByClassName('cart-quantity-input')[0]
+            var quantity = quantityElement.value 
+            var q = parseInt(quantity)
+            q = q + 1
+            localStorage["item-quantity" + i] = q
+            cartRows[i].getElementsByClassName('cart-quantity-input')[0].value = q 
+        }
+    }
+}
+
 
 function updateCartTotal(){
     localStorage["n"] = 0
@@ -153,6 +160,7 @@ function updateCartTotal(){
     var cartRows = cartItemContainer.getElementsByClassName('cart-row')
     var total = 0
     var row_value = 0
+
     for(var i=0 ; i<cartRows.length ; i++){
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
@@ -169,7 +177,6 @@ function updateCartTotal(){
         localStorage["item-full-price" + i] = row_value
         localStorage["item-image" + i] = cartRow.getElementsByClassName('cart-item-image')[0].src
         localStorage["n"] = localStorage["n"] + 1
-        
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
