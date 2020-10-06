@@ -16,7 +16,7 @@ function ready(){
     else
         c = "IT"
 
-    document.getElementsByClassName('ord')[0].innerText = c + n
+    document.getElementsByClassName('number')[0].innerText = c + n
     
    
 }

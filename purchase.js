@@ -109,21 +109,21 @@ function displayCart(){
         total = total + (price * quantity)  
     }
     total = Math.round(total * 100) / 100
-    document.getElementsByClassName('cartb')[0].innerText = "$" + total
+    document.getElementsByClassName('subtotal-price')[0].innerText = "$" + total
     addShipping_Payment()
 }
 
 
 function addShipping_Payment(){
-    document.getElementsByClassName('cartc')[0].innerText = "+ " + localStorage['shipping-fee']
+    document.getElementsByClassName('subtotal-price-extra')[0].innerText = "+ " + localStorage['shipping-fee']
     var s = parseFloat(localStorage['shipping-fee'].replace('$',''))
-    var t = document.getElementsByClassName('cartb')[0].innerText
+    var t = document.getElementsByClassName('subtotal-price')[0].innerText
     var total = parseFloat(t.replace('$',''))
     total = total + s
 
     if (localStorage["payment"] == "Cash on delivery"){
-        document.getElementsByClassName('carta')[2].innerText = "COD"
-        document.getElementsByClassName('cartc')[1].innerText = "+ $2.99"
+        document.getElementsByClassName('subtotal-title')[2].innerText = "COD"
+        document.getElementsByClassName('subtotal-price-extra')[1].innerText = "+ $2.99"
         var p =  2.99
         total = total + p
     }
