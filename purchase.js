@@ -39,7 +39,7 @@ function ready(){
     var cartRowContent1 = `
     <div class="black">${localStorage["shipping"]}</div>
     <div class="black">Approximate time of delivery: ${localStorage["shipping-time"]} days</div>
-    <div class="black">Cost: $${localStorage["shipping-fee"]}</div>
+    <div class="black">Cost: ${localStorage["shipping-fee"]}</div>
     `
     row1.innerHTML = cartRowContent1   
     info1.append(row1)
