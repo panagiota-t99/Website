@@ -43,11 +43,11 @@ function submitInformation(event){
                 messages[i].innerText = "Please select an option"      
         } 
         else if(inputs[i].value != '') {
-            if ((i == 0 || i ==1 || i ==4) && validateName_LastName_City(inputs[i].value))
+            if ((i == 0 || i ==1) && validateName_LastName(inputs[i].value))
                 flag[i] = removeError(inputs[i], errors[i], messages[i])
             else if (i == 2 & validateEmail(inputs[i].value))
                 flag[i] = removeError(inputs[i], errors[i], messages[i]) 
-            else if (i ==3 || i ==6 )
+            else if (i ==3 || i==4 || i ==6 )
                 flag[i] = removeError(inputs[i], errors[i], messages[i])  
             else if (i == 5 && (inputs[i].value>=10000 && inputs[i].value<=99999))
                 flag[i] = removeError(inputs[i], errors[i], messages[i])
@@ -58,22 +58,18 @@ function submitInformation(event){
         
 
 
-    if (inputs[0].value != '' && !validateName_LastName_City(inputs[0].value)){
+    if (inputs[0].value != '' && !validateName_LastName(inputs[0].value)){
         flag[i] = highlightError(inputs[0] , errors[0])
         messages[0].innerText = "Please fill out your name correctly"
     }
-    if (inputs[1].value != '' &&  !validateName_LastName_City(inputs[1].value)){
+    if (inputs[1].value != '' &&  !validateName_LastName(inputs[1].value)){
         flag[i] =  highlightError(inputs[1] , errors[1])
         messages[1].innerText = "Please fill out your last name correctly"    
     }
     if (inputs[2].value != '' &&  !validateEmail(inputs[2].value)){
         flag[i] =  highlightError(inputs[2] , errors[2])
         messages[2].innerText = "Invalid email address"    
-    }
-    if (inputs[4].value != '' &&  !validateName_LastName_City(inputs[4].value)){
-        flag[i] = highlightError(inputs[4] , errors[4])
-        messages[4].innerText = "Please fill out your city correctly"   
-    }
+    }  
     if (inputs[5].value != '' &&  (inputs[5].value < 10000 || inputs[5].value > 99999 )){
         flag[i] = highlightError(inputs[5] , errors[5])
         messages[5].innerText = "Invalid input. Please use a number between [10000-99999]"    
@@ -125,7 +121,7 @@ function removeError(input,error,message){
 }
 
 
-function validateName_LastName_City(word){
+function validateName_LastName(word){
     const re  = /^[a-zA-Z]+$/
     return re.test(word)
 }
