@@ -7,6 +7,13 @@ else
 function ready(){
     var button = document.getElementsByClassName('btn-checkout')[1]
     button.addEventListener('click' , submitInformation)
+
+    if (localStorage["edit-cart-flag"] == "true"){
+        if (localStorage["payment"] == "Online payment")
+            document.getElementById("1").checked = true;
+        else
+            document.getElementById("2").checked = true;
+    }
 }
 
 

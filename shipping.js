@@ -7,6 +7,15 @@ else
 function ready(){
     var button = document.getElementsByClassName('btn-checkout')[1]
     button.addEventListener('click' , submitInformation)
+
+    if (localStorage["edit-cart-flag"] == "true"){
+        if (localStorage["shipping"] == "Standard shipping")
+            document.getElementById("1").checked = true;
+        else if (localStorage["shipping"] == "Economy shipping")
+            document.getElementById("2").checked = true;
+        else
+            document.getElementById("3").checked = true;
+    }
 }
 
 
