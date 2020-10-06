@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 @font-face{
     font-family: "South Park";
@@ -542,4 +543,31 @@ html, body{
     display: inline-block;
     margin-left: 20px;
     margin-top: 60px;
+}
+
+.order-number{
+    text-align: center;
+}
+
+.final-message1{
+    margin: 0px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.final-message2{
+    margin-top: 0px;
+    margin-bottom: 130px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.email{
+    font-style: italic;
+    color: rgb(66, 68, 66);
+}
+
+.ord{
+    font-family: "Work Sans";
+    font-size: 1em;
 }

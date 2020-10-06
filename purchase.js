@@ -77,7 +77,7 @@ function editCart(event){
 
 function completePurchase(event){
     button = event.target
-    alert("Your purchase is being processed!!!")
+    window.location = "purchase_completed.html"
 }
 
 
