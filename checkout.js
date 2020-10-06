@@ -7,6 +7,21 @@ else
 function ready(){
      var button = document.getElementsByClassName('btn-checkout')[0]
      button.addEventListener('click' , submitInformation)
+
+     if (localStorage["edit-cart-flag"] == "true"){
+         document.getElementsByClassName('info-input-box')[0].value = localStorage['name']
+         document.getElementsByClassName('info-input-box')[1].value = localStorage['last-name']
+         document.getElementsByClassName('info-input-box')[2].value = localStorage['email']
+         document.getElementsByClassName('info-input-box')[3].value = localStorage['country']
+         document.getElementsByClassName('info-input-box')[4].value = localStorage['city']
+         document.getElementsByClassName('info-input-box')[5].value = localStorage['zip-code']
+         document.getElementsByClassName('info-input-box')[6].value = localStorage['address']
+         document.getElementsByClassName('info-input-box')[7].value = localStorage['number']
+
+         if (localStorage['request'] != "empty")
+            document.getElementsByClassName('info-input-box')[8].value = localStorage['request']       
+
+     }
 }
 
 
