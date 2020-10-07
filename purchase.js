@@ -9,11 +9,18 @@ function ready(){
     row0.classList.add('details')
     var info0 = document.getElementsByClassName('contact-info')[0]
 
+    var code
+    if (localStorage["country"] == "Greece")
+        code = "+30" 
+    else if (localStorage["country"] == "Spain")
+        code = "+34" 
+    else if (localStorage["country"] == "Italy")
+        code = "+39" 
+
     var cartRowContent0 = ` <div class="black">${localStorage["name"]} ${localStorage["last-name"]} </div>
         <div class="black">${localStorage["email"]}</div>
-        <div class="black">${localStorage["phone-number"]}</div>
+        <div class="black">${code} ${localStorage["phone-number"]}</div>
     `
-
     row0.innerHTML = cartRowContent0 
     info0.append(row0)
 
@@ -22,10 +29,7 @@ function ready(){
     row.classList.add('details')
     var info = document.getElementsByClassName('client-info')[0]
 
-    var cartRowContent = `
-        
-        
-        <div class="black">${localStorage["country"]}</div>
+    var cartRowContent = `<div class="black">${localStorage["country"]}</div>
         <div class="black">${localStorage["city"]}</div>
         <div class="black">${localStorage["address"]} ${localStorage["number"]}</div>
         <div class="black">${localStorage["zip-code"]}</div>
@@ -44,6 +48,20 @@ function ready(){
         request.append(extra)
     }
 
+    if (localStorage["billings"] == "true"){
+        var row_b = document.createElement('div')
+        row_b.classList.add('details')
+        var info_b = document.getElementsByClassName('billings')[0]
+
+        var cartRowContent_b = ` <h2 class="section-header section-header-small">Billings address</h2>
+            <div class="black">${localStorage["country"]}</div>
+            <div class="black">${localStorage["b-city"]}</div>
+            <div class="black">${localStorage["b-address"]} ${localStorage["b-number"]}</div>
+            <div class="black">${localStorage["b-zip-code"]}</div>
+        `
+        row_b.innerHTML = cartRowContent_b   
+        info_b.append(row_b)
+    }
 
 
     var row1 = document.createElement('div')
@@ -73,10 +91,8 @@ function ready(){
 
     var button1 = document.getElementsByClassName('btn-edit')[0]
     var button2 = document.getElementsByClassName('btn-purchase')[0]
-    
     button1.addEventListener('click' , editCart)
     button2.addEventListener('click' , completePurchase)
-
 
     displayCart()
 }

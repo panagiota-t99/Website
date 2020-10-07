@@ -5,24 +5,26 @@ else
 
 
 function ready(){
-     var button = document.getElementsByClassName('btn-checkout')[0]
-     button.addEventListener('click' , submitInformation)
+    var button = document.getElementsByClassName('btn-checkout')[0]
+    button.addEventListener('click' , submitInformation)
 
-     if (localStorage["edit-cart-flag"] == "true"){
-         document.getElementsByClassName('info-input-box')[0].value = localStorage['name']
-         document.getElementsByClassName('info-input-box')[1].value = localStorage['last-name']
-         document.getElementsByClassName('info-input-box')[2].value = localStorage['email']
-         document.getElementsByClassName('info-input-box')[3].value = localStorage['country']
-         document.getElementsByClassName('info-input-box')[4].value = localStorage['city']
-         document.getElementsByClassName('info-input-box')[5].value = localStorage['zip-code']
-         document.getElementsByClassName('info-input-box')[6].value = localStorage['address']
-         document.getElementsByClassName('info-input-box')[7].value = localStorage['number']
-         document.getElementsByClassName('info-input-box')[8].value = localStorage['phone-number']
-
-         if (localStorage['request'] != "empty")
+    if (localStorage["edit-cart-flag"] == "true"){
+        document.getElementsByClassName('info-input-box')[0].value = localStorage['name']
+        document.getElementsByClassName('info-input-box')[1].value = localStorage['last-name']
+        document.getElementsByClassName('info-input-box')[2].value = localStorage['email']
+        document.getElementsByClassName('info-input-box')[3].value = localStorage['country']
+        document.getElementsByClassName('info-input-box')[4].value = localStorage['city']
+        document.getElementsByClassName('info-input-box')[5].value = localStorage['zip-code']
+        document.getElementsByClassName('info-input-box')[6].value = localStorage['address']
+        document.getElementsByClassName('info-input-box')[7].value = localStorage['number']
+        document.getElementsByClassName('info-input-box')[8].value = localStorage['phone-number']
+        
+        if (localStorage["billings"] == "true")
+            document.getElementById('checkbox').checked
+     
+        if (localStorage['request'] != "empty")
             document.getElementsByClassName('info-input-box')[9].value = localStorage['request']       
-
-     }
+    }
 }
 
 
@@ -35,7 +37,6 @@ function submitInformation(event){
     var flag = []
 
     for(var i = 0 ; i < errors.length  ; i++){
-        
         if (inputs[i].value == '') {     
             flag[i] = highlightError(inputs[i] , errors[i])
             if (i != 3)  
@@ -56,45 +57,41 @@ function submitInformation(event){
                 flag[i] = removeError(inputs[i], errors[i], messages[i]) 
             else if (i==8 && inputs[i].value.length == 10 && validatePhoneNumber(inputs[i].value))
                 flag[i] = removeError(inputs[i], errors[i], messages[i])
-
         }   
     }
         
 
-
     if (inputs[0].value != '' && !validateName_LastName(inputs[0].value)){
-        flag[i] = highlightError(inputs[0] , errors[0])
+        flag[0] = highlightError(inputs[0] , errors[0])
         messages[0].innerText = "Please fill out your name correctly"
     }
     if (inputs[1].value != '' &&  !validateName_LastName(inputs[1].value)){
-        flag[i] =  highlightError(inputs[1] , errors[1])
+        flag[1] =  highlightError(inputs[1] , errors[1])
         messages[1].innerText = "Please fill out your last name correctly"    
     }
     if (inputs[2].value != '' &&  !validateEmail(inputs[2].value)){
-        flag[i] =  highlightError(inputs[2] , errors[2])
+        flag[2] =  highlightError(inputs[2] , errors[2])
         messages[2].innerText = "Invalid email address"    
     }  
     if (inputs[5].value != '' &&  (inputs[5].value < 10000 || inputs[5].value > 99999 )){
-        flag[i] = highlightError(inputs[5] , errors[5])
+        flag[5] = highlightError(inputs[5] , errors[5])
         messages[5].innerText = "Invalid input. Please use a number between [10000-99999]"    
     }
     if (inputs[7].value != '' &&  (inputs[7].value <= 0 || inputs[7].value > 300)){ 
-        flag[i] = highlightError(inputs[7],errors[7])
+        flag[7] = highlightError(inputs[7],errors[7])
         messages[7].innerText = "Invalid input. Please use a number between [1-300]"   
     }
     if (inputs[8].value != '' &&  ((inputs[8].value.length < 10 || inputs[8].value.length > 10) ||
         !validatePhoneNumber(inputs[8].value))){ 
-        flag[i] = highlightError(inputs[8],errors[8])
+        flag[8] = highlightError(inputs[8],errors[8])
         messages[8].innerText = "Invalid phone number"   
     }
 
 
-    
     var counter = 0;
     for (var i = 0 ; i < 9 ; i++)
         counter = counter + flag[i]
 
-    
     if (counter == 9){
         window.location = "shipping.html"  
         localStorage["name"] = inputs[0].value
@@ -105,19 +102,17 @@ function submitInformation(event){
         localStorage["zip-code"] = inputs[5].value
         localStorage["address"] = inputs[6].value
         localStorage["number"] = inputs[7].value
-
-        if (localStorage["country"] == "Greece")
-            localStorage["phone-number"] = "+30" + inputs[8].value
-        else if (localStorage["country"] == "Spain")
-            localStorage["phone-number"] = "+34" + inputs[8].value
-        else
-            localStorage["phone-number"] = "+39" + inputs[8].value
-
+        localStorage["phone-number"] = inputs[8].value
+        
         if (inputs[9].value != "")
             localStorage["request"] = inputs[9].value  
         else
             localStorage["request"] = "empty"
+
+        goToBillingsAddress() 
     }
+   
+    
 }
 
 
@@ -154,3 +149,11 @@ function validatePhoneNumber(number){
     return re.test(number)
 }
 
+
+function goToBillingsAddress(){
+    var checkbox = document.getElementById('checkbox')
+    if (checkbox.checked)
+        window.location = "billings_address.html"
+    else
+        localStorage["billings"] = "false"  
+}

@@ -17,6 +17,4 @@ function ready(){
         c = "IT"
 
     document.getElementsByClassName('number')[0].innerText = c + n
-    
-   
 }

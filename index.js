@@ -12,6 +12,7 @@ function ready(){
         btn.addEventListener('click' , dealWithButton)
     }
     localStorage["edit-cart-flag"] = "false"
+    localStorage["billings"] = "false"
 }
 
 
