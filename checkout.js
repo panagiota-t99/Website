@@ -20,7 +20,7 @@ function ready(){
         document.getElementsByClassName('info-input-box')[8].value = localStorage['phone-number']
         
         if (localStorage["billings"] == "true")
-            document.getElementById('checkbox').checked
+            document.getElementById('checkbox').checked = true
      
         if (localStorage['request'] != "empty")
             document.getElementsByClassName('info-input-box')[9].value = localStorage['request']       
@@ -155,5 +155,6 @@ function goToBillingsAddress(){
     if (checkbox.checked)
         window.location = "billings_address.html"
     else
-        localStorage["billings"] = "false"  
+        localStorage["billings"] = "false"
+     
 }
