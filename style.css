@@ -482,6 +482,10 @@ html, body{
   
 }
 
+.contact-info{
+    margin-bottom: 50px;  
+}
+
 .client-info{
     margin-bottom: 50px;
 }

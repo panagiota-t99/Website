@@ -5,21 +5,34 @@ else
 
 
 function ready(){
+    var row0 = document.createElement('div')
+    row0.classList.add('details')
+    var info0 = document.getElementsByClassName('contact-info')[0]
+
+    var cartRowContent0 = ` <div class="black">${localStorage["name"]} ${localStorage["last-name"]} </div>
+        <div class="black">${localStorage["email"]}</div>
+        <div class="black">${localStorage["phone-number"]}</div>
+    `
+
+    row0.innerHTML = cartRowContent0 
+    info0.append(row0)
+
+
     var row = document.createElement('div')
     row.classList.add('details')
     var info = document.getElementsByClassName('client-info')[0]
 
     var cartRowContent = `
-        <div class="black">Name: ${localStorage["name"]}</div>
-        <div class="black">Last Name: ${localStorage["last-name"]}</div>
-        <div class="black">Email: ${localStorage["email"]}</div>
-        <div class="black">Country: ${localStorage["country"]}</div>
-        <div class="black">City: ${localStorage["city"]}</div>
-        <div class="black">Address: ${localStorage["address"]} ${localStorage["number"]}</div>
-        <div class="black">Zip code: ${localStorage["zip-code"]}</div>
+        
+        
+        <div class="black">${localStorage["country"]}</div>
+        <div class="black">${localStorage["city"]}</div>
+        <div class="black">${localStorage["address"]} ${localStorage["number"]}</div>
+        <div class="black">${localStorage["zip-code"]}</div>
     `
     row.innerHTML = cartRowContent   
     info.append(row)
+
 
     if (localStorage["request"] != "empty" )
     {
@@ -30,6 +43,7 @@ function ready(){
         extra.innerHTML = requestContent
         request.append(extra)
     }
+
 
 
     var row1 = document.createElement('div')

@@ -17,9 +17,10 @@ function ready(){
          document.getElementsByClassName('info-input-box')[5].value = localStorage['zip-code']
          document.getElementsByClassName('info-input-box')[6].value = localStorage['address']
          document.getElementsByClassName('info-input-box')[7].value = localStorage['number']
+         document.getElementsByClassName('info-input-box')[8].value = localStorage['phone-number']
 
          if (localStorage['request'] != "empty")
-            document.getElementsByClassName('info-input-box')[8].value = localStorage['request']       
+            document.getElementsByClassName('info-input-box')[9].value = localStorage['request']       
 
      }
 }
@@ -52,7 +53,10 @@ function submitInformation(event){
             else if (i == 5 && (inputs[i].value>=10000 && inputs[i].value<=99999))
                 flag[i] = removeError(inputs[i], errors[i], messages[i])
             else if (i == 7 && (inputs[i].value>=1 && inputs[i].value<=300))
-                flag[i] = removeError(inputs[i], errors[i], messages[i])           
+                flag[i] = removeError(inputs[i], errors[i], messages[i]) 
+            else if (i==8 && inputs[i].value.length == 10 && validatePhoneNumber(inputs[i].value))
+                flag[i] = removeError(inputs[i], errors[i], messages[i])
+
         }   
     }
         
@@ -78,14 +82,20 @@ function submitInformation(event){
         flag[i] = highlightError(inputs[7],errors[7])
         messages[7].innerText = "Invalid input. Please use a number between [1-300]"   
     }
+    if (inputs[8].value != '' &&  ((inputs[8].value.length < 10 || inputs[8].value.length > 10) ||
+        !validatePhoneNumber(inputs[8].value))){ 
+        flag[i] = highlightError(inputs[8],errors[8])
+        messages[8].innerText = "Invalid phone number"   
+    }
+
 
     
     var counter = 0;
-    for (var i = 0 ; i < 8 ; i++)
+    for (var i = 0 ; i < 9 ; i++)
         counter = counter + flag[i]
 
     
-    if (counter == 8){
+    if (counter == 9){
         window.location = "shipping.html"  
         localStorage["name"] = inputs[0].value
         localStorage["last-name"] = inputs[1].value
@@ -96,8 +106,15 @@ function submitInformation(event){
         localStorage["address"] = inputs[6].value
         localStorage["number"] = inputs[7].value
 
-        if (inputs[8].value != "")
-            localStorage["request"] = inputs[8].value  
+        if (localStorage["country"] == "Greece")
+            localStorage["phone-number"] = "+30" + inputs[8].value
+        else if (localStorage["country"] == "Spain")
+            localStorage["phone-number"] = "+34" + inputs[8].value
+        else
+            localStorage["phone-number"] = "+39" + inputs[8].value
+
+        if (inputs[9].value != "")
+            localStorage["request"] = inputs[9].value  
         else
             localStorage["request"] = "empty"
     }
@@ -130,5 +147,10 @@ function validateName_LastName(word){
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return re.test(email)
+}
+
+function validatePhoneNumber(number){
+    const re  = /^[0-9]+$/
+    return re.test(number)
 }
 
